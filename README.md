@@ -5,7 +5,7 @@ This is my repository of exercises and pratical project from my journey to becom
 ## Enviromental
 
 - **OS:** Ubuntu (WSL2)
-- **Languages** C++, Bash Script
+- **Languages:** C++, Bash Script
 - **Tools:** Git, GCC, Nano
 
 ## Tutorial
