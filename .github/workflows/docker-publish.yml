@@ -21,9 +21,9 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME}}/lakcpp:latest
-      - name: Send notification to Slack
-        uses: archive/github-actions-slack@v2.0.0
+      - name: Discord Notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORDWEBHOOK }}
+        uses: Ilshidur/action-discord@master
         with:
-          slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_TOKEN }}
-          slack-channel: ${{ secrets.SLACK_CHANNEL_ID }}
-          slack-text: "🚀 Build & Push Docker Image thành công rực rỡ! User: ${{ github.actor }}"
+          args: '🚀 Build & Push Docker Image successfully! User: ${{ github.actor }}'
