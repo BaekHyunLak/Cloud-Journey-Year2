@@ -36,3 +36,13 @@ jobs:
         uses: Ilshidur/action-discord@master
         with:
           args: '🚀 Build & Push Docker Image success! User: ${{ github.actor }}'
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USERNAME}}
+          password: ${{secrets.SSH_PASSWORD}}
+          script: |
+            docker pull ${{secrets.DOCKER_USERNAME}}/lakcpp:latest
+            echo "🔥 Đang chạy ứng dụng trên máy chủ thật..."
+            docker run --rm ${{ secrets.DOCKER_USERNAME }}/lakcpp:latest
