@@ -27,3 +27,13 @@ jobs:
         uses: Ilshidur/action-discord@master
         with:
           args: '🚀 Build & Push Docker Image successfully! User: ${{ github.actor }}'
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{secrets.DOCKER_USERNAME}}/lakcpp:latest
+          format: table
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL.HIGH'
+        
