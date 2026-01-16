@@ -26,7 +26,7 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: '🚀 Build & Push Docker Image successfully! User: ${{ github.actor }}'
+          args: '🚀 Build & Push Docker Image success! User: ${{ github.actor }}'
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
@@ -35,5 +35,4 @@ jobs:
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
-          severity: 'CRITICAL.HIGH'
-        
+          severity: 'CRITICAL,HIGH'
