@@ -23,7 +23,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME}}/lakcpp:latest
       - name: Discord Notification
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORDWEBHOOK }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
           args: '🚀 Build & Push Docker Image successfully! User: ${{ github.actor }}'
