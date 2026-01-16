@@ -21,12 +21,6 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME}}/lakcpp:latest
-      - name: Discord Notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        uses: Ilshidur/action-discord@master
-        with:
-          args: '🚀 Build & Push Docker Image success! User: ${{ github.actor }}'
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
@@ -36,3 +30,9 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+      - name: Discord Notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '🚀 Build & Push Docker Image success! User: ${{ github.actor }}'
